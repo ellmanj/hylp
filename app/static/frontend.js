@@ -2,13 +2,13 @@
 var modes = [0, 0, 0]
 
 var x = document.getElementById("demo");
-
+var obj;
 
 
 function parseObj(obj){
-
-for(i = 0; i<3;i++){
-document.getElementById('cards').innerHTML=document.getElementById('cards').innerHTML+"<div class ='block' id='rating"+i+"' onClick='expand(this.id)'> <div id='ratingContainer'><div id='entry'><div id='entryText'>Example Restaurant"+i+"</div><div id='aRating'>Wheelchair Rating:  3.1/5 </div><div id='yRating'>Yelp:  4.2/5</div><div id='rating"+i+"more'></div><div class='arrow' id='rating"+i+"arrow'></div></div></div></div>";
+obj = obj.yelp_response.businesses
+for(i = 0; i<10;i++){
+document.getElementById('cards').innerHTML=document.getElementById('cards').innerHTML+"<div class ='block' id='rating"+i+"' onClick='expand(this.id,"+i+")'> <div id='ratingContainer'><div id='entry'><div id='entryText'>"+obj[i].name+"</div><div id='aRating'>Wheelchair Rating:  "+obj[i].hylp_wheelchair+" </div><div id='aRating'>Vision Rating:  "+obj[i].hylp_vision+" </div><div id='aRating'>Hearing Rating:  "+obj[i].hylp_hearing+" </div><div id='yRating'>Yelp: "+obj[i].rating+" </div><div id='rating"+i+"more'></div><div class='arrow' id='rating"+i+"arrow'></div></div></div></div>";
 }
 
 
@@ -32,7 +32,7 @@ document.getElementById("mapArea").innerHTML =" <div class ='block'><iframe id='
         headers: { "Content-Type": "application/json"},
         dataType: "json",
         success: function (result) {
-           var obj = result;
+           obj = result;
            parseObj(obj);
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -89,20 +89,23 @@ if(newMode == 'wheelchair'){
 		document.getElementById("selected1").innerHTML="";
 	}
 }
+
 if(newMode=='vision'){
 if(modes[1]==0){
-	modes[1]=1;
-	document.getElementById("option2").style.backgroundColor="rgb(0,0,0)";
-	document.getElementById("option2").style.color="#ffffff";
-	document.getElementById("option2pic").src = "eyeb.png";
-	document.getElementById("selected2").innerHTML="<img src ='check.png'id='check'></img>";
+modes[1]=1;
+document.getElementById("option2").style.backgroundColor="rgb(0,0,0)";
+document.getElementById("option2").style.color="#ffffff";
+document.getElementById("option2pic").src = "eyeb.png";
+document.getElementById("selected2").innerHTML="<img src ='check.png'id='check'></img>";
+document.getElementById("full").style.backgroundColor="#000000";
 }else{
-	modes[1]=0;
-	document.getElementById("option2").style.backgroundColor="rgb(255,255,255)";
-	document.getElementById("option2").style.color="#000000";
-	document.getElementById("option2pic").src = "eye.png";
-	document.getElementById("selected2").innerHTML="";
-	
+modes[1]=0;
+document.getElementById("option2").style.backgroundColor="rgb(255,255,255)";
+document.getElementById("option2").style.color="#000000";
+document.getElementById("option2pic").src = "eye.png";
+document.getElementById("selected2").innerHTML="";
+document.getElementById("full").style.backgroundColor="rgb(245,245,241)";
+
 }
 
 //var oldlink = document.getElementsByTagName("link").item(0);
@@ -134,9 +137,34 @@ if(modes[2]==0){
 }
 
 
-function expand(id){
-	document.getElementById(id+"more").innerHTML="<form action='geo:0,0?q=1600+Amphitheatre+Parkway%2C+CA'><input type='submit' value='Directions'></form><div id='textReview'>This is a review</div><input type ='textfield' value='Submit a review'></input><img src='thumbsup.png' class='thumbPic'></img><img src='thumbsdown.png' class='thumbPic'></img>";
+function expand(id,i){
+	document.getElementById(id+"more").innerHTML="<form action='geo:0,0?q=1600+Amphitheatre+Parkway%2C+CA'><input type='submit' value='Directions'></form><div id='textReview'>This is a review</div><input type ='textfield' value='Submit a review'></input><img src='thumbsup.png' class='thumbPic'></img><img src='thumbsdown.png' class='thumbPic'></img><input type='button' value='Submit' onClick='submit("+i+")'>";
 	document.getElementById(id+"arrow").style.backgroundImage="url('expanded.png')";
+
+}
+
+function submit(i){
+console.log(i);
+$.ajax(
+
+    {
+        url: "/yelp/"+obj.yelp_response.businesses[i].id+"/review",
+        type: "POST",
+        data: JSON.stringify({disabilities: modes, note: "", rating: "4"}),
+        headers: { "Content-Type": "application/json"},
+        dataType: "json",
+        success: function (result) {
+           var obj = result;
+           parseObj(obj);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+        }
+    }
+
+
+    );
 
 }
 
