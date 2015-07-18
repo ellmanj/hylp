@@ -30,6 +30,8 @@ def query_yelp():
     print "{}, {}, {}".format(request.path, request.method, request.data)
     term = request.json['term']
     location = request.json['location']
+    print term
+    print location
     response = search(term, location)
     return jsonify(
         yelp_response=response
