@@ -19,7 +19,17 @@ body {
 	
 	position: static;
 	height: 60px;
-	background-color: rgb(187,10,0);
+	background: #c60d00; /* Old browsers */
+	background: -moz-linear-gradient(top, #c60d00 0%, #b10000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c60d00), color-stop(100%,#b10000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #c60d00 0%,#b10000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #c60d00 0%,#b10000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #c60d00 0%,#b10000 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #c60d00 0%,#b10000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c60d00', endColorstr='#b10000',GradientType=0 ); /* IE6-9 */
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.79);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.79);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.79);
 }
 
 #Logo{
@@ -35,6 +45,16 @@ body {
 	right: 10px;
 	left: 100px;
 	height: 40px;
+		background-color: rgb(245,245,241);
+	font: bold 20px "Lucida Grande", Lucida, Verdana, sans-serif;
+	text-indent: 10px;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
+	border: 0px solid #000000;
+	-webkit-box-shadow: inset 0px 0px 2px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 0px 2px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 2px 0px rgba(0,0,0,0.75);
 }
 
 
