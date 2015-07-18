@@ -31,6 +31,17 @@ def query_yelp():
     term = request.json['term']
     location = request.json['location']
     response = search(term, location)
+    for (index, business) in list(enumerate(response['businesses'])):
+        id = business['id']
+        biz = YelpVenue.objects(yelp_id=id).first()
+        if biz:
+            response['businesses'][index]['hylp_wheelchair'] = biz.wheelchair_rating()
+            response['businesses'][index]['hylp_vision'] = biz.vision_rating()
+            response['businesses'][index]['hylp_hearing'] = biz.hearing_rating()
+        else:
+            response['businesses'][index]['hylp_wheelchair'] = 0
+            response['businesses'][index]['hylp_vision'] = 0
+            response['businesses'][index]['hylp_hearing'] = 0
     return jsonify(
         yelp_response=response
     )
@@ -44,6 +55,23 @@ def query_yelp_business(biz_id):
 
 @app.route('/yelp/<biz_id>/review', methods=['POST'])
 def submit_review(biz_id):
+    biz = YelpVenue.objects(yelp_id=biz_id).first()
+    # if no business already, create it
+    if biz is None:
+        biz = YelpVenue(yelp_id=biz_id,
+                        reviews=[])
+
     content = request.json['disabilities']
     comment = request.json['note']
     rating = request.json['rating']
+
+    review = Review(wheelchair=bool(content[0]),
+                    vision=bool(content[1]),
+                    hearing=bool(content[2]),
+                    comment=comment,
+                    rating=rating)
+    biz.reviews.append(review)
+    biz.save()
+    return jsonify(dict(
+        success=True
+    ))
