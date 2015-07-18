@@ -1,31 +1,46 @@
-
 <html>
 	<head>
-		<title>HYLP - Assistive Restaurant Ratings In Chicago</title>
-		<link rel="stylesheet" href="static/style.css">
+		<title>hylp - Assistive Restaurant Ratings In Chicago</title>
+		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="frontend.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	</head>
 	
 	<body>
+	<div id="modeSelect">
+	<div class="Option" onClick="setMode('wheelchair')" id="option1"><img src="wheelchair.png" class="optionPic" id="option1pic"><p id="optionText">Wheelchair</p><div id='selected1'></div></div>
+	<div class="Option" onClick="setMode('vision')" id="option2"><img src="eye.png" class="optionPic" id="option2pic"><p id="optionText">Vision</p><div id='selected2'></div></div>
+	<div class="Option" onClick="setMode('hearing')" id="option3"><img src="ear.png" class="optionPic" id="option3pic"><p id="optionText">Hearing</p><div id='selected3'></div></div>
+	
+	</div>
+	
 		<div id="header">
-			<img src="static/logo.png" id="logo">
-			<input type="text" value="Search" id="search" >
-		</div>
+			<img src="logo.png" id="logo">
+			<div id="search"><input type="text" value="Find" id="searchBox" onFocus="if(this.value=='Find') this.value='';" 
+			onkeypress="
+			    if (event.which == 13) {
+			        searchYelp(this.value);}">
+			        </div>
+			<div id="locationButton"></div>
+					</div>
+		
 		
 		<div id="center">
 		
-		<div id ="block">
-		
-		<iframe
-		  id="map"
-		  frameborder="0" style="border:0"
-		  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDeOWcG4pK1fCPtkEszTPnzPyQ9n40eMX4
-		    &q=Space+Needle,Seattle+WA" allowfullscreen>
-		</iframe>	
-				
+		<div id="mapArea">
 		</div>
 		
-		<div id ="block">
-		<p> List results here</p>
+		<div class ="block" id="rating1" onClick="expand(this.id)">
+		<div id="ratingContainer">
+		<div id="entry">
+		<div id="entryText">Example Restaurant</div>
+		<div id="aRating">Wheelchair Rating:  3.1/5 </div>
+		<div id="yRating">Yelp:  4.2/5</div>
+		<div id="rating1more"></div>
+		<div class="arrow" id="rating1arrow"></div>
+		</div>
+		
+		</div>			
 		</div>
 			</div>
 	</body>
