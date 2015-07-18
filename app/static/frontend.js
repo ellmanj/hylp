@@ -4,6 +4,16 @@ var modes = [0, 0, 0]
 var x = document.getElementById("demo");
 
 
+
+function parseObj(obj){
+
+for(i = 0; i<3;i++){
+document.getElementById('cards').innerHTML=document.getElementById('cards').innerHTML+"<div class ='block' id='rating"+i+"' onClick='expand(this.id)'> <div id='ratingContainer'><div id='entry'><div id='entryText'>Example Restaurant"+i+"</div><div id='aRating'>Wheelchair Rating:  3.1/5 </div><div id='yRating'>Yelp:  4.2/5</div><div id='rating"+i+"more'></div><div class='arrow' id='rating"+i+"arrow'></div></div></div></div>";
+}
+
+
+}
+
 //---------------------------------------------------------------------------
 function searchYelp(query){
 document.getElementById('locationButton').style.backgroundImage = "url('loader.gif')";
@@ -22,7 +32,7 @@ document.getElementById("mapArea").innerHTML =" <div class ='block'><iframe id='
         headers: { "Content-Type": "application/json"},
         dataType: "json",
         success: function (result) {
-           var obj = JSON.parse(result);
+           var obj = result;
            parseObj(obj);
         },
         error: function (xhr, ajaxOptions, thrownError) {
