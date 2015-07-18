@@ -18,7 +18,7 @@ document.getElementById("mapArea").innerHTML =" <div class ='block'><iframe id='
     {
         url: "/yelp",
         type: "POST",
-        data: { term: query, location: "Chicago"},
+        data: JSON.stringify({term: query, location: "Chicago"}),
         headers: { "Content-Type": "application/json"},
         dataType: "json",
         success: function (result) {
