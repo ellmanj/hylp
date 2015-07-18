@@ -4,6 +4,7 @@ import pprint
 import sys
 import urllib
 import urllib2
+import config
 
 import oauth2
 
@@ -16,10 +17,10 @@ SEARCH_PATH = '/v2/search/'
 BUSINESS_PATH = '/v2/business/'
 
 # OAuth credential placeholders that must be filled in by users.
-CONSUMER_KEY = 'ZSd1KMvj36mnTJ1Va7v-zg'
-CONSUMER_SECRET = 'f_imXXxCgXt8LF-Oxo3dojaKArU'
-TOKEN = 'LW2Iyqq1yAyTpC-GnwZFDIYAC0ZdkdrB'
-TOKEN_SECRET = 'TiIH99pIUOZx0YQggGmGzVxeW1E'
+CONSUMER_KEY = config.CONSUMER_KEY
+CONSUMER_SECRET = config.CONSUMER_SECRET
+TOKEN = config.TOKEN
+TOKEN_SECRET = config.TOKEN_SECRET
 
 
 def request(host, path, url_params=None):
