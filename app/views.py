@@ -27,6 +27,7 @@ def get_venue(venue_id):
 
 @app.route('/yelp', methods=['POST'])
 def query_yelp():
+    print "{}, {}, {}".format(request.path, request.method, request.data)
     term = request.json['term']
     location = request.json['location']
     response = search(term, location)

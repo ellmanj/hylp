@@ -19,11 +19,11 @@ document.getElementById("mapArea").innerHTML =" <div class ='block'><iframe id='
         url: "/yelp",
         type: "POST",
         data: { term: query, location: "Chicago"},
+        headers: { "Content-Type": "application/json"},
         dataType: "json",
         success: function (result) {
            var obj = JSON.parse(result);
            parseObj(obj);
-            
         },
         error: function (xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
