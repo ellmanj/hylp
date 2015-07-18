@@ -1,0 +1,13 @@
+# any temporary python files or compiled python files
+*.py~
+*.pyc
+
+# want to ignore all submodule .git folders
+*/.git
+
+# pycharm folder
+.idea
+
+# don't want to deploy the venv itself, just make
+# sure the requirements.txt file is up to date
+venv
