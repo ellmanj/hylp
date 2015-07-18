@@ -1,32 +1,43 @@
 <html>
 	<head>
-		<title>HYLP - Assistive Restaurant Ratings In Chicago</title>
+		<title>hylp - Assistive Restaurant Ratings In Chicago</title>
 		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="frontend.js"></script>
 	</head>
 	
 	<body>
+	<div id="modeSelect">
+	<div id="Option" onClick="setMode('wheelchair')"><img src="wheelchair.png" id="optionPic"><p id="optionText">Wheelchair</p></div>	
+	<div id="Option" onClick="setMode('vision')"><img src="eye.png" id="optionPic"><p id="optionText">Vision</p></div>	
+	<div id="Option" onClick="setMode('hearing')"><img src="ear.png" id="optionPic"><p id="optionText">Hearing</p></div>
+	
+	</div>
+	
 		<div id="header">
 			<img src="logo.png" id="logo">
-			<input type="text" value="Find" id="search" >
-			<div id="locationButton"></div>
-		</div>
+			<div id="search"><input type="text" value="Find" id="searchBox" onFocus="if(this.value=='Find') this.value='';" 
+			onkeypress="
+			    if (event.which == 13) {
+			        searchYelp(this.value);}">
+			        </div>
+			<div id="locationButton" onClick="document.getElementById(rando).value='ehh'"></div>		</div>
 		
 		
 		<div id="center">
 		
-		<div id ="block">
+		<div id="mapArea">
 		
-		<iframe
-		  id="map"
-		  frameborder="0" style="border:0"
-		  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDeOWcG4pK1fCPtkEszTPnzPyQ9n40eMX4
-		    &q=Space+Needle,Seattle+WA" allowfullscreen>
-		</iframe>	
-				
+		</div>
+		<div class ="block">
+		<div id="ratingContainer">
+		<div id="entry">
+		<div id="entryText">Example Resturant</div>
+		<div id="aRating">Wheelchair Rating:  3.1 Stars</div>
+		<div id="yRating">Yelp:  4.2 Stars</div>
+		<div id="arrow"></div>
 		</div>
 		
-		<div id ="block">
-		<p> List results here</p>
+		</div>			
 		</div>
 			</div>
 	</body>
