@@ -2,7 +2,9 @@ from app import db
 
 
 class Review(db.EmbeddedDocument):
-    rating = db.IntField()
+    wheelchairRating = db.IntField()
+    visionRating = db.IntField()
+    hearingRating = db.IntField()
     comment = db.StringField()
 
 

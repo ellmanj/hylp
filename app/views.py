@@ -23,3 +23,7 @@ def get_venue(venue_id):
     venue = YelpVenue.objects(yelp_id=venue_id).first()
     return jsonify(
         venue=venue)
+
+@app.route('/venue/wheelchairRating' methods=['POST'])
+def post_rating():
+    request.
