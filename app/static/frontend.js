@@ -20,11 +20,11 @@ parseObj("test");
         type: "POST",
         headers:{"Content-Type": "application/json"},
         data: { term: query, location: "Chicago"},
-        dataType: "application/json",
+        headers: { "Content-Type": "application/json"},
+        dataType: "json",
         success: function (result) {
            var obj = JSON.parse(result);
            parseObj(obj);
-            
         },
         error: function (xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
