@@ -3,13 +3,14 @@
 		<title>hylp - Assistive Restaurant Ratings In Chicago</title>
 		<link rel="stylesheet" href="style.css">
 		<script type="text/javascript" src="frontend.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	</head>
 	
 	<body>
 	<div id="modeSelect">
-	<div id="Option" onClick="setMode('wheelchair')"><img src="wheelchair.png" id="optionPic"><p id="optionText">Wheelchair</p></div>	
-	<div id="Option" onClick="setMode('vision')"><img src="eye.png" id="optionPic"><p id="optionText">Vision</p></div>	
-	<div id="Option" onClick="setMode('hearing')"><img src="ear.png" id="optionPic"><p id="optionText">Hearing</p></div>
+	<div class="Option" onClick="setMode('wheelchair')" id="option1"><img src="wheelchair.png" class="optionPic" id="option1pic"><p id="optionText">Wheelchair</p><div id='selected1'></div></div>	
+	<div class="Option" onClick="setMode('vision')" id="option2"><img src="eye.png" class="optionPic" id="option2pic"><p id="optionText">Vision</p><div id='selected2'></div></div>	
+	<div class="Option" onClick="setMode('hearing')" id="option3"><img src="ear.png" class="optionPic" id="option3pic"><p id="optionText">Hearing</p><div id='selected3'></div></div>
 	
 	</div>
 	
@@ -20,21 +21,23 @@
 			    if (event.which == 13) {
 			        searchYelp(this.value);}">
 			        </div>
-			<div id="locationButton" onClick="document.getElementById(rando).value='ehh'"></div>		</div>
+			<div id="locationButton"></div>
+					</div>
 		
 		
 		<div id="center">
 		
 		<div id="mapArea">
-		
 		</div>
-		<div class ="block">
+		
+		<div class ="block" id="rating1" onClick="expand(this.id)">
 		<div id="ratingContainer">
 		<div id="entry">
-		<div id="entryText">Example Resturant</div>
-		<div id="aRating">Wheelchair Rating:  3.1 Stars</div>
-		<div id="yRating">Yelp:  4.2 Stars</div>
-		<div id="arrow"></div>
+		<div id="entryText">Example Restaurant</div>
+		<div id="aRating">Wheelchair Rating:  3.1/5 </div>
+		<div id="yRating">Yelp:  4.2/5</div>
+		<div id="rating1more"></div>
+		<div class="arrow" id="rating1arrow"></div>
 		</div>
 		
 		</div>			

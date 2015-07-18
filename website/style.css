@@ -24,7 +24,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c60d00', end
 box-shadow: 0 0 5px rgba(0, 0, 0, 0.79);
 	
 }
-#Option{
+.Option{
 	position: relative;
 	width: 31.1%;
 	height: 40;
@@ -47,8 +47,16 @@ margin-top: 10px;
 float:left;
 }
 
+#check{
+	height: 30px;
+	width: 30px;
+	margin-right: 05px;
+	float: right;
+	margin-top: 5px;
+}
 
-#optionPic{
+
+.optionPic{
 height: 30px;
 	width: 30px;
 
@@ -151,7 +159,7 @@ position: relative;
 	padding: 5;
 }
 
-#arrow{
+.arrow{
 	height:30px;
 	width: 20px;
 	background-image: url(arrow.png);
@@ -168,3 +176,9 @@ background-position: 50% 50%;
 #entryText{
 	font: bold 18px "Lucida Grande", Lucida, Verdana, sans-serif;
 }
+
+.thumbPic{
+	width: 18px;
+	height: 25px;
+}
+
