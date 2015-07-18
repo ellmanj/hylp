@@ -10,7 +10,7 @@ def hello():
 
 @app.route('/')
 def index():
-    return 'Index Page'
+    return render_template('index.html')
 
 @app.route('/ping', methods=['GET', 'POST'])
 def ping():
