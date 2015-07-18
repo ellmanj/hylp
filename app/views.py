@@ -1,6 +1,7 @@
 
 from app import app
-from flask import render_template, jsonify
+from app.yelp import search, get_business
+from flask import render_template, jsonify, request
 from .models import *
 
 
@@ -23,3 +24,19 @@ def get_venue(venue_id):
     venue = YelpVenue.objects(yelp_id=venue_id).first()
     return jsonify(
         venue=venue)
+
+@app.route('/yelp', methods=['POST'])
+def query_yelp():
+    term = request.json['term']
+    location = request.json['location']
+    response = search(term, location)
+    return jsonify(
+        yelp_response=response
+    )
+
+@app.route('/yelp/<biz_id>', methods=['POST'])
+def query_yelp_business(biz_id):
+    response = get_business(biz_id)
+    return jsonify(
+        yelp_response=response
+    )
