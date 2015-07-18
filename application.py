@@ -14,9 +14,5 @@ application.config['MONGODB_PORT'] = 27017
 # application.config['MONGODB_HOST'] ='ds047752.mongolab.com'
 # application.config['MONGODB_PORT'] = 47752
 
-@application.route('/')
-def hello_world():
-    return 'Hello World!'
-
 if __name__ == '__main__':
     application.run()
