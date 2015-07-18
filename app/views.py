@@ -40,3 +40,9 @@ def query_yelp_business(biz_id):
     return jsonify(
         yelp_response=response
     )
+
+@app.route('/yelp/<biz_id>/review', methods=['POST'])
+def submit_review(biz_id):
+    content = request.json['disabilities']
+    comment = request.json['note']
+    rating = request.json['rating']

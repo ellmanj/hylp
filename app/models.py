@@ -2,10 +2,11 @@ from app import db
 
 
 class Review(db.EmbeddedDocument):
-    wheelchairRating = db.IntField()
-    visionRating = db.IntField()
-    hearingRating = db.IntField()
+    wheelchair = False
+    vision = False
+    hearing = False
     comment = db.StringField()
+    rating = db.IntField()
 
 
 class YelpVenue(db.Document):
