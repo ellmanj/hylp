@@ -19,4 +19,4 @@ application.config['MONGODB_SETTINGS'] = {
 
 
 if __name__ == '__main__':
-    application.run()
+    application.run(debug=True)
