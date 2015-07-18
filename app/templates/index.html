@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	</head>
 	
-	<body>
+	<body id="full">
 	<div id="modeSelect">
 	<div class="Option" onClick="setMode('wheelchair')" id="option1"><img src="wheelchair.png" class="optionPic" id="option1pic"><p id="optionText">Wheelchair</p><div id='selected1'></div></div>
 	<div class="Option" onClick="setMode('vision')" id="option2"><img src="eye.png" class="optionPic" id="option2pic"><p id="optionText">Vision</p><div id='selected2'></div></div>
@@ -30,18 +30,10 @@
 		<div id="mapArea">
 		</div>
 		
-		<div class ="block" id="rating1" onClick="expand(this.id)">
-		<div id="ratingContainer">
-		<div id="entry">
-		<div id="entryText">Example Restaurant</div>
-		<div id="aRating">Wheelchair Rating:  3.1/5 </div>
-		<div id="yRating">Yelp:  4.2/5</div>
-		<div id="rating1more"></div>
-		<div class="arrow" id="rating1arrow"></div>
-		</div>
 		
-		</div>			
-		</div>
-			</div>
+		<div id="cards"></div>
+		
+		
+					</div>
 	</body>
 </html>

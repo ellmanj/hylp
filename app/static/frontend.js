@@ -11,15 +11,16 @@ document.getElementById('locationButton').style.backgroundImage = "url('loader.g
 document.getElementById("mapArea").innerHTML =" <div class ='block'><iframe id='map'  frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDeOWcG4pK1fCPtkEszTPnzPyQ9n40eMX4&q="+query+", Chicago' allowfullscreen></iframe></div>";
 	
 
-
+parseObj("test");
 
     $.ajax(
     
     {
         url: "/yelp",
         type: "POST",
+        headers:{"Content-Type": "application/json"},
         data: { term: query, location: "Chicago"},
-        dataType: "json",
+        dataType: "application/json",
         success: function (result) {
            var obj = JSON.parse(result);
            parseObj(obj);
@@ -40,6 +41,19 @@ document.getElementById("mapArea").innerHTML =" <div class ='block'><iframe id='
 	document.getElementById('locationButton').style.backgroundImage = "url('location.png')";
 	
 }
+
+function parseObj(obj){alert("called");
+for(i = 0; i<3;i++){
+document.getElementById('cards').innerHTML=document.getElementById('cards').innerHTML+"<div class ='block' id='rating"+i+"' onClick='expand(this.id)'> <div id='ratingContainer'><div id='entry'><div id='entryText'>Example Restaurant</div><div id='aRating'>Wheelchair Rating:  3.1/5 </div><div id='yRating'>Yelp:  4.2/5</div><div id='rating"+i+"more'></div><div class='arrow' id='rating"+i+"arrow'></div></div></div></div>";
+}
+
+
+}
+
+
+
+
+
 
 //---------------------------------------------------------------------------
 function getLocation() {
@@ -86,23 +100,17 @@ if(modes[1]==0){
 	document.getElementById("option2").style.color="#ffffff";
 	document.getElementById("option2pic").src = "eyeb.png";
 	document.getElementById("selected2").innerHTML="<img src ='check.png'id='check'></img>";
+	document.getElementById("full").style.backgroundColor="#000000";
 }else{
 	modes[1]=0;
 	document.getElementById("option2").style.backgroundColor="rgb(255,255,255)";
 	document.getElementById("option2").style.color="#000000";
 	document.getElementById("option2pic").src = "eye.png";
 	document.getElementById("selected2").innerHTML="";
+	document.getElementById("full").style.backgroundColor="rgb(245,245,241)";
 	
 }
 
-//var oldlink = document.getElementsByTagName("link").item(0);
-// 
-//        var newlink = document.createElement("link");
-//        newlink.setAttribute("rel", "stylesheet");
-//        newlink.setAttribute("type", "text/css");
-//        newlink.setAttribute("href", "bwstyle.css");
-//        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-//        
 
 }
 if(newMode=='hearing'){
