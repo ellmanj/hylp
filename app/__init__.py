@@ -11,6 +11,7 @@ from flask_mongoengine import MongoEngine
 db = MongoEngine(app)
 
 from models import *
+import views
 
 # admin
 from flask_admin import Admin
