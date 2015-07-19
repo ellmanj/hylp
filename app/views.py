@@ -23,7 +23,8 @@ def ping():
 def get_venue(venue_id):
     venue = YelpVenue.objects(yelp_id=venue_id).first()
     return jsonify(
-        venue=venue)
+        venue=venue
+    )
 
 @app.route('/yelp', methods=['POST'])
 def query_yelp():
